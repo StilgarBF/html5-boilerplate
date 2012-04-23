@@ -1,0 +1,87 @@
+// *******************************************
+// ** background gradients
+// *******************************************
+
+// **** 3-stop gradients
+
+// a vertical background gradient with 3 stops.
+// each stop has a color and position
+.background-gradient-vert-3-custom(@stop1col, @stop1pos,  @stop2col, @stop2pos,  @stop3col, @stop3pos) {
+	// unicolor for older browsers
+	background: @stop2col;
+	// Firefox
+	background: -moz-linear-gradient(		top, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// older versions of webkit chrome safari
+	background: -webkit-gradient(linear, left top, left bottom,
+									color-stop(@stop1pos,@stop1col),
+									color-stop(@stop2pos,@stop2col),
+									color-stop(@stop3pos,@stop3col));
+	// newer webkit - chrome 10+, Safari 5.1+
+	background: -webkit-linear-gradient(	top, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// Opera 11.10+
+	background: -o-linear-gradient(			top, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// IE 10
+	background: -ms-linear-gradient(		top, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// W3C - how it should be
+	background: linear-gradient(			top, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// IE 6, 7, 8, 9
+	// only 2 stops are supported here
+	filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=0)",@stop1col,@stop3col));
+}
+
+// a vertical background gradient with 3 stops.
+// stops are at 0%, 50%, 100%
+// usage: .background-gradient-vert-3(#123, #00F, #654321);
+.background-gradient-vert-3(@stop1, @stop2, @stop3) {
+	// simply calling the custom mixin
+	.background-gradient-vert-3-custom(@stop1, 0%,  @stop2, 50%,  @stop3, 100%);
+}
+
+// **** 2-stop gradients
+
+// a background gradient with 2 stops.
+// usage: .background-gradient-vert-2-cust(#111, 10%, #771, 75%) {
+.background-gradient-vert-2-cust(@stop1col, @stop1pos, @stop2col, @stop2pos) {
+	// unicolor for older browsers
+	background: @stop1col;
+	// Firefox
+	background: -moz-linear-gradient(		top, @stop1col @stop1pos, @stop2col @stop2pos);
+	// older versions of webkit chrome safari
+	background: -webkit-gradient(linear, left top, left bottom,
+									color-stop(@stop1pos,@stop1col),
+									color-stop(@stop2pos,@stop2col));
+	// newer webkit - chrome 10+, Safari 5.1+
+	background: -webkit-linear-gradient(	top, @stop1col @stop1pos, @stop2col @stop2pos);
+	// Opera 11.10+
+	background: -o-linear-gradient(			top, @stop1col @stop1pos, @stop2col @stop2pos);
+	// IE 10
+	background: -ms-linear-gradient(		top, @stop1col @stop1pos, @stop2col @stop2pos);
+	// W3C - how it should be
+	background: linear-gradient(			top, @stop1col @stop1pos, @stop2col @stop2pos);
+	// IE 6, 7, 8, 9
+	filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=0)",@stop1col,@stop2col));
+}
+
+// a background gradient with 2 stops.
+.background-gradient-vert-2(@stop1, @stop2) {
+	// simply calling the custom mixin
+	.background-gradient-vert-2-cust(@stop1, 0%, @stop2, 100%);
+}
+
+// *******************************************
+// ** border radius
+// *******************************************
+.border-radius (@radius: 5px) {
+	border-radius:			@radius;
+	-webkit-border-radius:	@radius;
+	-moz-border-radius:		@radius;
+}
+
+// *******************************************
+// ** box shadow
+// *******************************************
+.box-shadow(@offset-x: 3px, @offset-y: 3px, @blur: 2px, @color: #333) {
+	-webkit-box-shadow:	@offset-x @offset-y @blur @color;
+	-moz-box-shadow:	@offset-x @offset-y @blur @color;
+	box-shadow:			@offset-x @offset-y @blur @color;
+}
