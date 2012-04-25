@@ -30,6 +30,7 @@
 }
 
 // a vertical background gradient with 3 stops.
+// this is a shorthand for the version above
 // stops are at 0%, 50%, 100%
 // usage: .background-gradient-vert-3(#123, #00F, #654321);
 .background-gradient-vert-3(@stop1, @stop2, @stop3) {
@@ -37,6 +38,7 @@
 	.background-gradient-vert-3-custom(@stop1, 0%,  @stop2, 50%,  @stop3, 100%);
 }
 
+// *************************
 // **** 2-stop gradients
 
 // a background gradient with 2 stops.
@@ -63,6 +65,9 @@
 }
 
 // a background gradient with 2 stops.
+// this is a shorthand for the version above
+// stops are at 0%, 100%
+// usage: .background-gradient-vert-3(#123, #654321);
 .background-gradient-vert-2(@stop1, @stop2) {
 	// simply calling the custom mixin
 	.background-gradient-vert-2-cust(@stop1, 0%, @stop2, 100%);
