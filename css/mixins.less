@@ -80,6 +80,9 @@
 	border-radius:			@radius;
 	-webkit-border-radius:	@radius;
 	-moz-border-radius:		@radius;
+	-webkit-background-clip:padding-box;
+	-moz-background-clip:	padding;
+	background-clip:		padding-box
 }
 
 // *******************************************
@@ -89,4 +92,13 @@
 	-webkit-box-shadow:	@offset-x @offset-y @blur @color;
 	-moz-box-shadow:	@offset-x @offset-y @blur @color;
 	box-shadow:			@offset-x @offset-y @blur @color;
+}
+
+// *******************************************
+// ** opacity
+// *******************************************
+.opacity(@opacity : .5) {
+	-webkit-opacity:@opacity;
+	-moz-opacity:	@opacity;
+	opacity:		@opacity;
 }
