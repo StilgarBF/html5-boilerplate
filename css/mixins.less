@@ -2,6 +2,9 @@
 // ** background gradients
 // *******************************************
 
+// *************************
+// vertical
+// *************************
 // **** 3-stop gradients
 
 // a vertical background gradient with 3 stops.
@@ -67,10 +70,47 @@
 // a background gradient with 2 stops.
 // this is a shorthand for the version above
 // stops are at 0%, 100%
-// usage: .background-gradient-vert-3(#123, #654321);
+// usage: .background-gradient-vert-2(#123, #654321);
 .background-gradient-vert-2(@stop1, @stop2) {
 	// simply calling the custom mixin
 	.background-gradient-vert-2-cust(@stop1, 0%, @stop2, 100%);
+}
+
+// *************************
+// horizontal
+// *************************
+// **** 2-stop gradients
+
+// a background gradient with 2 stops.
+// usage: .background-gradient-hor-2-cust(#111, 10%, #771, 75%) {
+.background-gradient-hor-2-cust(@stop1col, @stop1pos, @stop2col, @stop2pos) {
+	// unicolor for older browsers
+	background: @stop1col;
+	// Firefox
+	background: -moz-linear-gradient(		left, @stop1col @stop1pos, @stop2col @stop2pos);
+	// older versions of webkit chrome safari
+	background: -webkit-gradient(linear, left top, right bottom,
+									color-stop(@stop1pos,@stop1col),
+									color-stop(@stop2pos,@stop2col));
+	// newer webkit - chrome 10+, Safari 5.1+
+	background: -webkit-linear-gradient(	left, @stop1col @stop1pos, @stop2col @stop2pos);
+	// Opera 11.10+
+	background: -o-linear-gradient(			left, @stop1col @stop1pos, @stop2col @stop2pos);
+	// IE 10
+	background: -ms-linear-gradient(		left, @stop1col @stop1pos, @stop2col @stop2pos);
+	// W3C - how it should be
+	background: linear-gradient(			left, @stop1col @stop1pos, @stop2col @stop2pos);
+	// IE 6, 7, 8, 9
+	filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=1)",@stop1col,@stop2col));
+}
+
+// a background gradient with 2 stops.
+// this is a shorthand for the version above
+// stops are at 0%, 100%
+// usage: .background-gradient-hor-2(#123, #654321);
+.background-gradient-hor-2(@stop1, @stop2) {
+	// simply calling the custom mixin
+	.background-gradient-hor-2-cust(@stop1, 0%, @stop2, 100%);
 }
 
 // *******************************************
