@@ -125,6 +125,21 @@
 	background-clip:		padding-box
 }
 
+.border-radius-4 (@radius1: 5px,@radius2: 5px,@radius3: 5px,@radius4: 5px) {
+	-webkit-border-top-left-radius:		@radius1;
+	-webkit-border-top-right-radius:	@radius2;
+	-webkit-border-bottom-left-radius:	@radius3;
+	-webkit-border-bottom-right-radius: @radius4;
+	-moz-border-radius-topleft:			@radius1;
+	-moz-border-radius-topright:		@radius2;
+	-moz-border-radius-bottomleft:		@radius3;
+	-moz-border-radius-bottomright:		@radius4;
+	border-top-left-radius:				@radius1;
+	border-top-right-radius:			@radius2;
+	border-bottom-left-radius:			@radius3;
+	border-bottom-right-radius:			@radius4;
+}
+
 // *******************************************
 // ** box shadow
 // *******************************************
