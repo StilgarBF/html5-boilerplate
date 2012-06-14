@@ -113,6 +113,40 @@
 	.background-gradient-hor-2-cust(@stop1, 0%, @stop2, 100%);
 }
 
+// a horizonta background gradient with 3 stops.
+// each stop has a color and position
+.background-gradient-hor-3-custom(@stop1col, @stop1pos,  @stop2col, @stop2pos,  @stop3col, @stop3pos) {
+	// unicolor for older browsers
+	background: @stop2col;
+	// Firefox
+	background: -moz-linear-gradient(		left, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// older versions of webkit chrome safari
+	background: -webkit-gradient(linear, left top, right top,
+									color-stop(@stop1pos,@stop1col),
+									color-stop(@stop2pos,@stop2col),
+									color-stop(@stop3pos,@stop3col));
+	// newer webkit - chrome 10+, Safari 5.1+
+	background: -webkit-linear-gradient(	left, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// Opera 11.10+
+	background: -o-linear-gradient(			left, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// IE 10
+	background: -ms-linear-gradient(		left, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// W3C - how it should be
+	background: linear-gradient(			left, @stop1col @stop1pos, @stop2col @stop2pos, @stop3col @stop3pos);
+	// IE 6, 7, 8, 9
+	// only 2 stops are supported here
+	filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=0)",@stop1col,@stop3col));
+}
+
+// a horizonta background gradient with 3 stops.
+// this is a shorthand for the version above
+// stops are at 0%, 50%, 100%
+// usage: .background-gradient-vert-3(#123, #00F, #654321);
+.background-gradient-hor-3(@stop1, @stop2, @stop3) {
+	// simply calling the custom mixin
+	.background-gradient-hor-3-custom(@stop1, 0%,  @stop2, 50%,  @stop3, 100%);
+}
+
 // *******************************************
 // ** border radius
 // *******************************************
